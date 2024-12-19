@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVenusMars, faPassport, faLanguage, faUserGraduate } from '@fortawesome/free-solid-svg-icons'
 import { type Job } from "../utils/types"
 
 type Props = {
@@ -17,7 +19,29 @@ export default function Job({ job }: Props) {
         <p className="job-location">{job.location}</p>
       </div>
 
-      
+      <div className="job-details">
+        <div className="job-detail">
+          <FontAwesomeIcon icon={faVenusMars} />
+          <p>{job.requiredGender}</p>
+        </div>
+
+
+        <div className="job-detail">
+          <FontAwesomeIcon icon={faPassport} />
+          <p>{job.requiredCitizenship}</p>
+        </div>
+        
+
+        <div className="job-detail">
+          <FontAwesomeIcon icon={faLanguage} />
+          <p>{job.requiredLanguages.join(', ')}</p>
+        </div>
+        
+        <div className="job-detail">
+          <FontAwesomeIcon icon={faUserGraduate} />
+          <p>{job.requiredEmploymentStatus}</p>
+        </div>
+      </div>
     </div>
   )
 }
