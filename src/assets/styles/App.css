@@ -2,3 +2,9 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+.heading {
+  font-family: "Arvo", serif;
+  font-weight: 700;
+  font-style: normal;
+}

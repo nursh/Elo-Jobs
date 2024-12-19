@@ -2,7 +2,7 @@
 export function Header() {
   return (
     <>
-      <h1>Elo Job Profiles</h1>
+      <h1 className="heading">Elo Job Profiles</h1>
     </>
   )
 }
