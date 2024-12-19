@@ -1,15 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router'
 import './assets/styles/App.css'
-import { Header } from './components/Header'
-import Job from './components/Job'
-import { jobs } from './utils/data'
+import JobListings from './pages/JobListings'
+
 
 function App() {
 
   return (
-    <>
-      <Header />
-      {jobs.map((job) => <Job job={job} />)}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<JobListings />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
