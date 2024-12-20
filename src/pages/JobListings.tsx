@@ -5,7 +5,7 @@ import { jobs } from '../utils/data'
 export default function JobListings() {
   return (
     <>
-      <Header />
+      <Header name="Job Listings" />
       {jobs.map((job) => <Job job={job} />)}
     </>
   )

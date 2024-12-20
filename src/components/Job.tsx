@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenusMars, faPassport, faLanguage, faUserGraduate, faLocationDot} from '@fortawesome/free-solid-svg-icons'
 import { type Job } from "../utils/types"
+import { NavLink } from "react-router";
 
 type Props = {
   job: Job;
@@ -13,7 +14,9 @@ export default function Job({ job }: Props) {
 
       <div className="job-heading">
         <div className="job-title">
-          <h3>{job.title}</h3>
+          <NavLink to={`/job/${job.id}`}>
+            <h3>{job.title}</h3>
+          </NavLink>
           <p>{job.company}</p>
         </div>
         <div className="job-detail">

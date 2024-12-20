@@ -1,0 +1,30 @@
+.profile-heading h2 {
+  margin: 5px 0 0;
+  padding: 0;
+}
+
+.profile-heading p {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-details {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.profile-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.profile-detail h5 {
+  text-transform: uppercase;
+}
+
+.profile-detail h5,
+.profile-detail p {
+  margin: 0;
+}
