@@ -15,12 +15,16 @@ export default function JobProfile() {
   const matchedUsers = users.filter(({ employmentStatus }) => job.requiredEmploymentStatus === employmentStatus)
 
   return (
-    <>
+    <div className="profile-container">
       <Header name="Job Profile" />
-      <JobDetails job={job} />
+      <div>
+        <JobDetails job={job} />
+      </div>
 
-      <h2>All Matching User Profiles</h2>
-      <UserList users={matchedUsers} />
-    </>
+      <div>
+        <h2>All Matching User Profiles</h2>
+        <UserList users={matchedUsers} />
+      </div>
+    </div>
   )
 }
