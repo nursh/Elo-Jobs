@@ -31,7 +31,7 @@ export default function JobProfile() {
           <p>{job.requiredAge}</p>
         </div>
         <div className="profile-detail">
-          <h5>Education Level:</h5>
+          <h5>Employment Status:</h5>
           <p>{job.requiredEmploymentStatus}</p>
         </div>
         <div className="profile-detail">

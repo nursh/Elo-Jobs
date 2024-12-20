@@ -10,7 +10,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["English", "Arabic"],
     requiredCitizenship: "UAE",
-    requiredEmploymentStatus: "Bachelors"
+    requiredEmploymentStatus: "Full Time"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["English", "French"],
     requiredCitizenship: "Canadian",
-    requiredEmploymentStatus: "PhD"
+    requiredEmploymentStatus: "Full Time"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["French", "English"],
     requiredCitizenship: "French",
-    requiredEmploymentStatus: "Masters"
+    requiredEmploymentStatus: "Full Time"
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["Arabic", "English", "French"],
     requiredCitizenship: "UAE",
-    requiredEmploymentStatus: "Bachelors"
+    requiredEmploymentStatus: "Full Time"
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["English", "French"],
     requiredCitizenship: "Canadian",
-    requiredEmploymentStatus: "Masters"
+    requiredEmploymentStatus: "Contract"
   },
   {
     id: 6,
@@ -65,7 +65,7 @@ export const jobs: Job[] = [
     requiredGender: "Male",
     requiredLanguages: ["Arabic", "English"],
     requiredCitizenship: "Saudi Arabian",
-    requiredEmploymentStatus: "Bachelors"
+    requiredEmploymentStatus: "Contract"
   },
   {
     id: 7,
@@ -76,7 +76,7 @@ export const jobs: Job[] = [
     requiredGender: "Female",
     requiredLanguages: ["French", "English"],
     requiredCitizenship: "French",
-    requiredEmploymentStatus: "Diploma"
+    requiredEmploymentStatus: "Part Time"
   },
   {
     id: 8,
@@ -87,7 +87,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["English"],
     requiredCitizenship: "Canadian",
-    requiredEmploymentStatus: "PhD"
+    requiredEmploymentStatus: "Full Time"
   },
   {
     id: 9,
@@ -98,7 +98,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["Arabic", "English"],
     requiredCitizenship: "Egyptian",
-    requiredEmploymentStatus: "Masters"
+    requiredEmploymentStatus: "Contract"
   },
   {
     id: 10,
@@ -109,7 +109,7 @@ export const jobs: Job[] = [
     requiredGender: "All",
     requiredLanguages: ["English", "Arabic"],
     requiredCitizenship: "UAE",
-    requiredEmploymentStatus: "Masters"
+    requiredEmploymentStatus: "Part Time"
   }
 ]
 
@@ -125,7 +125,7 @@ export const users: User[] = [
     disability: "None",
     age: 29,
     citizenship: "Canadian",
-    employmentStatus: "Employed",
+    employmentStatus: "Contract",
     levelOfEducation: "Masters"
   },
   {
@@ -139,7 +139,7 @@ export const users: User[] = [
     disability: "Visual impairment",
     age: 34,
     citizenship: "UAE",
-    employmentStatus: "Self-Employed",
+    employmentStatus: "Part Time",
     levelOfEducation: "PhD"
   },
   {
@@ -153,7 +153,7 @@ export const users: User[] = [
     disability: "None",
     age: 26,
     citizenship: "French",
-    employmentStatus: "Employed",
+    employmentStatus: "Full Time",
     levelOfEducation: "Bachelors"
   },
   {
@@ -167,7 +167,7 @@ export const users: User[] = [
     disability: "None",
     age: 41,
     citizenship: "British",
-    employmentStatus: "Self-Employed",
+    employmentStatus: "Full Time",
     levelOfEducation: "Diploma"
   },
   {
@@ -181,7 +181,7 @@ export const users: User[] = [
     disability: "Hearing impairment",
     age: 31,
     citizenship: "Egyptian",
-    employmentStatus: "Unemployed",
+    employmentStatus: "Part Time",
     levelOfEducation: "Masters"
   },
   {
@@ -195,7 +195,7 @@ export const users: User[] = [
     disability: "Mobility impairment",
     age: 38,
     citizenship: "Mexican",
-    employmentStatus: "Employed",
+    employmentStatus: "Full Time",
     levelOfEducation: "PhD"
   },
   {
@@ -209,7 +209,7 @@ export const users: User[] = [
     disability: "None",
     age: 27,
     citizenship: "Singaporean",
-    employmentStatus: "Self-Employed",
+    employmentStatus: "Full Time",
     levelOfEducation: "Masters"
   },
   {
@@ -223,7 +223,7 @@ export const users: User[] = [
     disability: "None",
     age: 33,
     citizenship: "American",
-    employmentStatus: "Employed",
+    employmentStatus: "Part Time",
     levelOfEducation: "Bachelors"
   },
   {
@@ -237,7 +237,7 @@ export const users: User[] = [
     disability: "None",
     age: 29,
     citizenship: "Japanese",
-    employmentStatus: "Unemployed",
+    employmentStatus: "Contract",
     levelOfEducation: "Masters"
   },
   {
@@ -251,7 +251,7 @@ export const users: User[] = [
     disability: "None",
     age: 36,
     citizenship: "Saudi Arabian",
-    employmentStatus: "Self-Employed",
+    employmentStatus: "Full Time",
     levelOfEducation: "Diploma"
   }
 ]

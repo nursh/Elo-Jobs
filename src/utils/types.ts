@@ -1,5 +1,5 @@
 type Gender = 'Male' | 'Female' | 'All';
-type EmploymentStatus = 'Self-Employed' | 'Employed' | 'Unemployed';
+type EmploymentStatus = 'Full Time' | 'Part Time' | 'Contract';
 type EducationLevel = 'Bachelors' | 'Masters' | 'PhD' | 'Diploma';
 type Language = 'English' | 'Arabic' | 'French';
 
@@ -12,7 +12,7 @@ export type Job = {
   requiredGender: Gender;
   requiredLanguages: Language[];
   requiredCitizenship: string;
-  requiredEmploymentStatus: EducationLevel;
+  requiredEmploymentStatus: EmploymentStatus;
 }
 
 
