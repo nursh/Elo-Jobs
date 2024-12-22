@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { Header } from "../components/Header";
+import { PageHeading } from "../components/Header";
 import { jobs, users } from "../utils/data";
 
 type Params = {
@@ -13,7 +13,7 @@ export function UserProfile() {
 
   return (
     <>
-      <Header name="User Profile" />
+      <PageHeading name="User Profile" />
     </>
   )
 }

@@ -1,19 +1,37 @@
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 2rem 0;
+nav {
   border-bottom: 1px solid #333;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  gap: 2rem;
+  padding: 1rem;
 
   font-family: "Arvo", serif;
   font-weight: 700;
 }
 
-.nav-links {
-  display: flex;
-  gap: 3rem;
+.nav-links li:first-child {
+  flex-basis: 100%;
+  text-align: center;
 }
 
 .nav-link {
   font-size: 1.5rem;
+}
+
+@media (min-width: 850px) {
+  
+  .nav-links {
+    padding: 2rem 100px;
+  }
+
+  .nav-links li:first-child {
+    flex-basis: auto;
+    text-align: left;
+    margin-right: auto;
+  }
 }

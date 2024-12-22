@@ -3,8 +3,8 @@ type Props = {
   name: string;
 }
 
-export function Header({ name }: Props) {
+export function PageHeading({ name }: Props) {
   return (
-    <h1 className="heading">{name}</h1>
+    <h2 className="page-heading">{name}</h2>
   )
 }

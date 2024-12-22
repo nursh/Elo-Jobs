@@ -1,5 +1,5 @@
 import { useParams } from "react-router"
-import { Header } from "../components/Header";
+import { PageHeading } from "../components/Header";
 import JobDetails from "../components/JobDetails";
 import '../assets/styles/JobProfile.css'
 import { jobs, users } from "../utils/data";
@@ -16,7 +16,7 @@ export default function JobProfile() {
 
   return (
     <div className="profile-container">
-      <Header name="Job Profile" />
+      <PageHeading name="Job Profile" />
       <div>
         <JobDetails job={job} />
       </div>

@@ -1,22 +1,21 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
 h3 {
   margin: 0;
   padding: 0;
 }
 
-.heading {
+.page-heading {
   font-family: "Arvo", serif;
   font-weight: 700;
   font-style: normal;
   margin: 30px 0 50px;
+  font-size: 2rem;
+}
+
+.job-listings {
+  padding: 0 100px;
 }
 
 .job-card {
-  max-width: 800px;
   border: 2px solid #444;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -50,4 +49,11 @@ h3 {
   color: #777;
   border-top: 1px solid #888;
   padding: 0 10px;
+}
+
+@media (min-width: 850px) {
+  .job-listings {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
