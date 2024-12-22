@@ -4,6 +4,7 @@ import JobListings from './pages/JobListings'
 import JobProfile from './pages/JobProfile'
 import { UserProfile } from './pages/UserProfile'
 import MainLayout from './pages/MainLayout'
+import UserProfiles from './pages/UserProfiles'
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<JobListings />} />
+          <Route index element={<JobListings />} />
+          <Route path="users" element={<UserProfiles />} />
           <Route path="job/:jobId" element={<JobProfile />} />
           <Route path="user/:userId" element={<UserProfile />} />
         </Route>

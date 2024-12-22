@@ -4,12 +4,12 @@ import '../assets/styles/MainLayout.css';
 export default function MainLayout() {
   return (
     <div>
-      <div className="header">
+      <div className="nav">
         <h1>Elo Jobs</h1>
-        <div className="header-links">
-          <NavLink to="/jobs" className="header-link">Jobs</NavLink>
-          <NavLink to="/users" className="header-link">Users</NavLink>
-        </div>
+        <nav className="nav-links">
+          <NavLink to="/" className="nav-link">Job Listings</NavLink>
+          <NavLink to="/users" className="nav-link">Users Profiles</NavLink>
+        </nav>
       </div>
       <Outlet />
     </div>

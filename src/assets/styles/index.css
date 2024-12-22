@@ -5,6 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  --text-dark-color: #213547;
   background-color: #242424;
 
   font-synthesis: none;
@@ -15,11 +16,12 @@
 
 a {
   font-weight: 500;
-  color: inherit;
+  color: var(--text-dark-color);
   text-decoration: inherit;
 }
-a:hover {
-  color: inherit;
+a:hover,
+a:active {
+  color: var(--text-dark-color);
   text-decoration: underline;
 }
 
@@ -57,8 +59,9 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
+  a:hover
+  a:active {
+    color: var(--text-dark-color);
   }
   button {
     background-color: #f9f9f9;
