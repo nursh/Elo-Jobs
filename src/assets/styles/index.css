@@ -60,6 +60,26 @@ ul {
   padding: 0;
 }
 
+table {
+  width: 100%;
+  border: 2px solid #eee;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 15px;
+}
+
+th {
+  text-align: left;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #eee;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

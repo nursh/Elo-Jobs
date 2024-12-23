@@ -19,6 +19,11 @@ export default function MainLayout() {
               Users Profiles
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/chat" className="nav-link">
+              Chat with us
+            </NavLink>
+          </li>
         </ul>
       </nav>
       <Outlet />

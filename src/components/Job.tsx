@@ -1,21 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVenusMars, faPassport, faLanguage, faLocationDot, faBriefcase} from '@fortawesome/free-solid-svg-icons'
-import { type Job } from "../utils/types"
+import { faVenusMars, faLanguage, faLocationDot, faBriefcase} from '@fortawesome/free-solid-svg-icons'
+import { JobReal, type Job } from "../utils/types"
 import { NavLink } from "react-router";
 
 type Props = {
-  job: Job;
+  job: JobReal;
 }
 
 export default function Job({ job }: Props) {
 
   return (
     <div className="job-card">
-
       <div className="job-heading">
         <div className="job-title">
           <NavLink to={`/job/${job.id}`}>
-            <h3>{job.title}</h3>
+            <h3>{job.job_title}</h3>
           </NavLink>
           <p>{job.company}</p>
         </div>
@@ -28,24 +27,18 @@ export default function Job({ job }: Props) {
       <div className="job-details">
         <div className="job-detail">
           <FontAwesomeIcon icon={faVenusMars} />
-          <p>{job.requiredGender}</p>
-        </div>
-
-
-        <div className="job-detail">
-          <FontAwesomeIcon icon={faPassport} />
-          <p>{job.requiredCitizenship}</p>
+          <p>{job.required_gender && 'All'}</p>
         </div>
         
 
         <div className="job-detail">
           <FontAwesomeIcon icon={faLanguage} />
-          <p>{job.requiredLanguages.join(', ')}</p>
+          <p>{job.required_languages.join(', ')}</p>
         </div>
         
         <div className="job-detail">
           <FontAwesomeIcon icon={faBriefcase} />
-          <p>{job.requiredEmploymentStatus}</p>
+          <p>{job.required_age}</p>
         </div>
       </div>
     </div>
