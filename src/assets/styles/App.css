@@ -53,6 +53,6 @@ h3 {
 
 @media (min-width: 850px) {
   .container {
-    max-width: max-content;
+    max-width: fit-content;
   }
 }

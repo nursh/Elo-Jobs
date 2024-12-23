@@ -64,7 +64,6 @@ table {
   width: 100%;
   border: 2px solid #eee;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
 th, td {

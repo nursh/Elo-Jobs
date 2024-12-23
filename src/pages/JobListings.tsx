@@ -1,6 +1,7 @@
 import { NavLink } from "react-router";
 import { PageHeading } from "../components/Header";
 import { qatarJobs } from "../utils/data";
+import { getLanguages } from "../utils/dataFormat";
 
 export default function JobListings() {
   return (
@@ -28,9 +29,7 @@ export default function JobListings() {
                 <td>{job.required_age}</td>
                 <td>{job.required_experience}</td>
                 <td>
-                  {job.required_languages && job.required_languages.length > 0
-                    ? job.required_languages.join(", ")
-                    : "None"}
+                  {getLanguages(job.required_languages)}
                 </td>
                 <td>{job.location}</td>
               </tr>

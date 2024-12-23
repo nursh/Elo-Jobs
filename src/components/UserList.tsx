@@ -1,5 +1,5 @@
 import { User } from "../utils/types";
-import '../assets/styles/UserList.css';
+// import '../assets/styles/UserList.css';
 
 type Props = {
   users: User[];

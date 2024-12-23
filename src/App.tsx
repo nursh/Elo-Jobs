@@ -15,8 +15,8 @@ function App() {
         <Route element={<MainLayout />}>
           <Route index element={<JobListings />} />
           <Route path="users" element={<UserProfiles />} />
-          <Route path="job/:jobId" element={<JobProfile />} />
-          <Route path="user/:userId" element={<UserProfile />} />
+          <Route path="jobs/:jobId" element={<JobProfile />} />
+          <Route path="users/:userId" element={<UserProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>
