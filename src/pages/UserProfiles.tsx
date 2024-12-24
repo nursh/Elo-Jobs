@@ -10,11 +10,11 @@ export default function UserProfiles() {
   const [usersData, setUsersData] = useState<UserReal[]>([]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="container">Loading...</div>;
   }
 
   if (isError) {
-    return <div>Something went wrong</div>;
+    return <div className="container">Something went wrong</div>;
   }
 
   if (isSuccess) {
