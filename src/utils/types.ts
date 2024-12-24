@@ -1,7 +1,10 @@
 type Gender = 'Male' | 'Female' | 'All';
 type EmploymentStatus = 'Full Time' | 'Part Time' | 'Contract';
 type EducationLevel = 'Bachelors' | 'Masters' | 'PhD' | 'Diploma';
-type Language = 'English' | 'Arabic' | 'French';
+type Lang = {
+  name: string;
+  level: number;
+}
 
 export type Job = {
   id: number;
@@ -10,7 +13,7 @@ export type Job = {
   location: string;
   requiredAge: number;
   requiredGender: Gender;
-  requiredLanguages: Language[];
+  requiredLanguages: string[];
   requiredCitizenship: string;
   requiredEmploymentStatus: EmploymentStatus;
 }
@@ -32,7 +35,7 @@ export type JobReal = {
   required_experience: number;
   required_gender: string | null;
   required_age: number;
-  required_languages: string[] | null;
+  required_languages: Lang[] | null;
   optional_languages: string[] | null;
   required_citizenship: string;
   required_disability: boolean;
@@ -84,7 +87,7 @@ export type User = {
   email: string;
   phoneNumber: string;
   gender: Gender;
-  languages: Language[];
+  languages: string[];
   disability: string;
   age: number;
   citizenship: string;

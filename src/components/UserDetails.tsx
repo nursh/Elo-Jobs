@@ -19,7 +19,7 @@ export default function UserDetails({ user }: Props) {
         <ProfileDetail title="email" value={user.email} />
         <ProfileDetail title="age" value={user.age} />
         <ProfileDetail title="citizenship" value={user.citizenship || 'None'} />
-        <ProfileDetail title="languages" value={getLanguages(user.languages.map(({ name }) => name))} />
+        <ProfileDetail title="languages" value={getLanguages(user.languages)} />
       </div>
     </>
   )
