@@ -1,0 +1,20 @@
+.talent-chat-container {
+  display: grid;
+  padding-left: 100px;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.talent-chat-container h2{
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+}
+
+.connection-status {
+  grid-column: 1 / -1;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.talent-chat-messages {
+  grid-column: 1 / 6;
+}

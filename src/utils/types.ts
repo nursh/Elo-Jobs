@@ -91,3 +91,8 @@ export type User = {
   employmentStatus: EmploymentStatus;
   levelOfEducation: EducationLevel;
 }
+
+export type Message = {
+  role: 'user' | 'chatbot';
+  content: string;
+}
