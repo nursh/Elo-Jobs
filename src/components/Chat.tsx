@@ -17,8 +17,8 @@ export default function Chat({ sendMessage }: Props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="query">Enter message here</label>
-        <textarea placeholder="Enter message here" name="query" id="query" />
+        <label htmlFor="query">Enter message here:</label>
+        <textarea placeholder="Enter message here" name="query" id="query" rows={3} />
         <button type="submit">Submit</button>
       </form>
     </div>

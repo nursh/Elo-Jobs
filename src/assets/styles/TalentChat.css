@@ -1,6 +1,7 @@
 .talent-chat-container {
   display: grid;
   padding-left: 100px;
+  padding-right: 100px;
   grid-template-columns: repeat(8, 1fr);
 }
 
@@ -17,4 +18,9 @@
 
 .talent-chat-messages {
   grid-column: 1 / 6;
+  padding-right: 40px;
+}
+
+.talent-chat-box {
+  grid-column: 6 / 9;
 }
