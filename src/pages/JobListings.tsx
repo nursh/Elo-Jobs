@@ -1,17 +1,14 @@
 import { NavLink } from "react-router";
 import { PageHeading } from "../components/Header";
 import { getLanguages } from "../utils/dataFormat";
-import { useQuery } from "@tanstack/react-query";
+import { useFetchJobs } from "../lib/useFetchJobs";
+import Pagination from "../components/Pagination";
+import { useState } from "react";
 import { JobReal } from "../utils/types";
 
 export default function JobListings() {
-  const { isLoading, isSuccess, isError, data } = useQuery<JobReal[]>({
-    queryKey: ["jobs"],
-    queryFn: async () => {
-      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/jobs`);
-      return await response.json();
-    },
-  });
+  const { isLoading, isSuccess, isError, data } = useFetchJobs();
+  const [dataShown, setDataShown] = useState<JobReal[]>([]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,7 +34,7 @@ export default function JobListings() {
             </tr>
           </thead>
           <tbody>
-            {data.map((job) => {
+            {dataShown.map((job) => {
               return (
                 <tr key={job.id}>
                   <td>{job.id}</td>
@@ -53,6 +50,11 @@ export default function JobListings() {
             })}
           </tbody>
         </table>
+        <Pagination
+          data={data}
+          limit={10}
+          setPageData={setDataShown}
+        />
       </div>
     );
   }
