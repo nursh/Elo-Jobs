@@ -5,6 +5,7 @@ import "../assets/styles/JobProfile.css";
 import ResumeList from "../components/ResumeList";
 import { useFetchJob } from "../lib/useFetchJob";
 import { useResumeForJob } from "../lib/useResumeForJob";
+import JobChat from "./JobChat";
 
 type Params = {
   jobId: string;
@@ -46,6 +47,7 @@ export default function JobProfile() {
 
       <div className="profile-chat">
         <h2>Chat Profile</h2>
+        <JobChat jobId={jobId!} />
       </div>
     </div>
   );
