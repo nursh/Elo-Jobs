@@ -15,7 +15,9 @@ export default function JobChat({ jobId }: Props) {
     `${import.meta.env.VITE_JOB_CHAT_URL}/${jobId}`,
     {
       onOpen: () => console.log("Connection opened..."),
-      reconnectInterval: 30
+      shouldReconnect: (closeEvent: CloseEvent) => true,
+      reconnectInterval: 30000,
+      reconnectAttempts: 3
     }
   );
 
