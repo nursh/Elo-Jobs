@@ -24,3 +24,60 @@
 .talent-chat-box {
   grid-column: 6 / 9;
 }
+
+.post-message-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.post-message-box input {
+  flex: 1;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.post-message-box button {
+  padding: 0.5rem 1rem;
+}
+
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message {
+  font-weight: bold;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.post-message {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #28a745;
+}

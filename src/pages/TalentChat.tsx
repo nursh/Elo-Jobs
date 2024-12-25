@@ -5,6 +5,8 @@ import ChatMessages from "../components/ChatMessages";
 import '../assets/styles/TalentChat.css';
 import { Message } from "../utils/types";
 import { PageHeading } from "../components/Header";
+import PostMessageBox from "../components/PostMessageBox";
+
 
 export default function TalentChat() {
   const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
@@ -27,6 +29,16 @@ export default function TalentChat() {
 
   const [messages, setMessages] = useState<Message[]>([]);
 
+  const sendPostMessage = (message: string) => {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/search/resumes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: message,
+    })
+      .then((response) => response.json());
+  }
   const sendMessage = (message: string) => {
     setMessages((prev) => [...prev, { role: 'user', content: message }]);
     sendJsonMessage({ message }, true);
@@ -40,13 +52,15 @@ export default function TalentChat() {
 
   return (
     <div className="talent-chat-container">
-      <PageHeading name="Talent Chat" />
-      <p className="connection-status">Connection Status: {connectionStatus}...</p>
-      <div className="talent-chat-messages">
-        <ChatMessages messages={messages} />
+        <PageHeading name="Talent Discuss" />
+        {/*<Chat sendMessage={sendPostMessage} />*/}
+        <PostMessageBox sendPostMessage={sendPostMessage} />
+        <p className="connection-status">Connection Status: {connectionStatus}...</p>
+        <div className="talent-chat-messages">
+          <ChatMessages messages={messages} />
       </div>
-      <div className="talent-chat-box">
-        <Chat sendMessage={sendMessage} />
+        <div className="talent-chat-box">
+          <Chat sendMessage={sendMessage} />
       </div>
     </div>
   );

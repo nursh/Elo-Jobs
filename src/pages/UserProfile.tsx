@@ -5,7 +5,7 @@ import { useFetchUserResume } from "../lib/useFetchUserResume";
 import ResumeChat from "./ResumeChat";
 import { useJobForResume } from "../lib/useJobForResume";
 import JobList from "../components/JobList";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState,useEffect } from "react";
 
 type Params = {
   userId: string;
@@ -15,12 +15,13 @@ export function UserProfile() {
   const { userId } = useParams<Params>();
   const { isLoading, isSuccess, isError, data } = useFetchUserResume(userId!);
   const [filtered, setFiltered] = useState(false);
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(15);
   const {
     isLoading: isJobsLoading,
     isSuccess: isJobsSuccess,
     isError: isJobsError,
     data: jobsData,
+    refetch: refetchJobs,
   } = useJobForResume(userId!, count, filtered);
 
   const handleFilterSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -31,6 +32,10 @@ export function UserProfile() {
   const handleCountSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
     setCount(Number(evt.currentTarget.value));
   }
+
+  useEffect(() => {
+    refetchJobs();
+  }, [filtered, count]);
 
   return (
     <div className="profile-container">
@@ -51,10 +56,11 @@ export function UserProfile() {
           <option value={0}>Unfiltered</option>
           <option value={1}>Filtered</option>
         </select>
-        <select defaultValue={5} onChange={(handleCountSelect)}>
+        <select defaultValue={15} onChange={(handleCountSelect)}>
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={15}>15</option>
+          <option value={20}>20</option>
         </select>
         {isJobsLoading ? (
           <div>Loading...</div>
@@ -67,7 +73,7 @@ export function UserProfile() {
 
       <div className="profile-chat">
         <h2>Chat Profile</h2>
-        <ResumeChat resumeId={userId!} />
+        <ResumeChat resumeId={userId!} filtered={filtered} />
       </div>
     </div>
   );

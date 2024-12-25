@@ -18,11 +18,15 @@ export default function JobList({ jobs }: Props) {
         <thead>
           <tr>
             <th>Job ID</th>
-            <th>Job Title</th>
+            <th>Title</th>
             <th>Company</th>
             <th>Required Experience</th>
             <th>Languages</th>
-            <th>location</th>
+            <th>Gender</th>
+            <th>Citizenship</th>
+            <th>Max Age</th>
+            <th>Education</th>
+            <th>Disability</th>
           </tr>
         </thead>
         <tbody>
@@ -36,11 +40,16 @@ export default function JobList({ jobs }: Props) {
                 <td>{job.company}</td>
                 <td>{job.required_experience}</td>
                 <td>{getLanguages(job.required_languages)}</td>
-                <td>
-                  {job.location === "" || job.location === "nan"
-                    ? ""
-                    : job.location}
-                </td>
+                {/*<td>*/}
+                {/*  {job.location === "" || job.location === "nan"*/}
+                {/*    ? ""*/}
+                {/*    : job.location}*/}
+                {/*</td>*/}
+                <td>{job.required_gender}</td>
+                <td>{job.required_citizenship}</td>
+                <td>{job.required_age === 0 ? "": job.required_age}</td>
+                <td>{job.required_education}</td>
+                <td>{job.required_disability}</td>
               </tr>
             );
           })}

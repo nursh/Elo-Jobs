@@ -8,11 +8,13 @@ import { Message } from "../utils/types";
 
 type Props = {
   jobId: string;
+  filtered: boolean;
 }
 
-export default function JobChat({ jobId }: Props) {
+export default function JobChat({ jobId, filtered }: Props) {
+  const url = filtered ? `${import.meta.env.VITE_JOB_CHAT_URL_FILTERED}/${jobId}` : `${import.meta.env.VITE_JOB_CHAT_URL}/${jobId}`;
   const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
-    `${import.meta.env.VITE_JOB_CHAT_URL}/${jobId}`,
+    url,
     {
       onOpen: () => console.log("Connection opened..."),
       retryOnError:  true,

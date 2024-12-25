@@ -8,11 +8,13 @@ import { Message } from "../utils/types";
 
 type Props = {
   resumeId: string;
+  filtered: boolean;
 }
 
-export default function ResumeChat({ resumeId }: Props) {
-  const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
-    `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`,
+export default function ResumeChat({ resumeId, filtered }: Props) {
+    const url = filtered ? `${import.meta.env.VITE_RESUME_CHAT_URL_FILTERED}/${resumeId}` : `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`;
+    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
+    url,
     {
       onOpen: () => console.log("Connection opened..."),
       retryOnError:  true,
