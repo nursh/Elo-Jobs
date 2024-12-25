@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenusMars, faLanguage, faLocationDot, faBriefcase} from '@fortawesome/free-solid-svg-icons'
 import { JobReal, type Job } from "../utils/types"
 import { NavLink } from "react-router";
+import { getLanguages } from "../utils/dataFormat";
 
 type Props = {
   job: JobReal;
@@ -33,7 +34,7 @@ export default function Job({ job }: Props) {
 
         <div className="job-detail">
           <FontAwesomeIcon icon={faLanguage} />
-          <p>{job.required_languages.join(', ')}</p>
+          <p>{getLanguages(job.required_languages)}</p>
         </div>
         
         <div className="job-detail">
