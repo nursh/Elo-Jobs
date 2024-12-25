@@ -3,7 +3,7 @@ import { getLanguages } from "../utils/dataFormat";
 import { JobReal } from "../utils/types";
 
 type Props = {
-  jobs: JobReal[];
+  jobs: JobReal[] | { detail: string};
 };
 
 export default function JobList({ jobs }: Props) {
