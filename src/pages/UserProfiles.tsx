@@ -4,6 +4,7 @@ import { useFetchUserProfiles } from "../lib/useFetchUserProfiles";
 import { useState } from "react";
 import { UserReal } from "../utils/types";
 import Pagination from "../components/Pagination";
+import { getLanguages } from "../utils/dataFormat";
 
 export default function UserProfiles() {
   const { isLoading, isSuccess, isError, data } = useFetchUserProfiles();
@@ -36,14 +37,14 @@ export default function UserProfiles() {
           <tbody>
             {usersData.map((user) => {
               return (
-                <tr>
+                <tr key={user.id}>
                   <td>
                     <NavLink to={`/users/${user.id}`}>{user.name}</NavLink>
                   </td>
                   <td>{user.email}</td>
                   <td>{user.age}</td>
                   <td>{user.gender}</td>
-                  <td>{user.languages.map((lang) => lang.name).join(", ")}</td>
+                  <td>{getLanguages(user.languages)}</td>
                   <td>
                     {user.education.map((school) => school.degree).join(", ")}
                   </td>

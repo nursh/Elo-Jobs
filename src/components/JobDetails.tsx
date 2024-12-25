@@ -6,7 +6,7 @@ type Props = {
 }
 
 export default function JobDetails({ job }: Props) {
-  
+    
     return (
       <>
         <div className="profile-heading">
@@ -22,12 +22,12 @@ export default function JobDetails({ job }: Props) {
             <p>{job.description}</p>
           </div>
           <div className="profile-detail">
-            <h5>Required Gender:</h5>
+            <h5>Gender:</h5>
             <p>{job.required_gender || 'All'}</p>
           </div>
           <div className="profile-detail">
-            <h5>Required Age:</h5>
-            <p>{job.required_age}</p>
+            <h5>Age:</h5>
+            <p>{job.required_age || 'None'}</p>
           </div>
           <div className="profile-detail">
             <h5>Experience(years):</h5>

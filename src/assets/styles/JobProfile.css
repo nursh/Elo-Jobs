@@ -1,6 +1,6 @@
 .profile-container {
   display: grid;
-  grid-template-columns: 100px 400px 1fr 200px;
+  grid-template-columns: 100px 350px repeat(6, 1fr) 50px;
 }
 
 .profile-container h2 {
@@ -12,6 +12,17 @@
   border-right: 1px solid rgb(0 0 0 / 0.3);
   padding-right: 1rem;
   margin-right: 1rem;
+}
+
+.profile-table {
+  grid-column: 3 / 7;
+  border-right: 1px solid rgb(0 0 0 / 0.3);
+  padding-right: 1rem;
+}
+
+.profile-chat {
+  grid-column: 7 / 9;
+  padding-left: 1rem;
 }
 
 .profile-heading h2 {

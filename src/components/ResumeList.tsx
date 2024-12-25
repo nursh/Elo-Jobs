@@ -1,35 +1,34 @@
-import { User } from "../utils/types";
+import { getLanguages } from "../utils/dataFormat";
+import { UserReal } from "../utils/types";
 // import '../assets/styles/UserList.css';
 
 type Props = {
-  users: User[];
+  users: UserReal[];
 }
 
-export default function UserList({ users }: Props) {
+export default function ResumeList({ users }: Props) {
 
   return (
     <>
       <table>
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>            
+            <th>Name</th>
+            <th>Email</th>            
             <th>Age</th>            
             <th>Gender</th>            
             <th>Languages</th>            
-            <th>Employment Status</th>            
           </tr>
         </thead>
         <tbody>
           {users.map((user) => {
             return (
-              <tr>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
                 <td>{user.age}</td>
                 <td>{user.gender}</td>
-                <td>{user.languages.join(', ')}</td>
-                <td>{user.employmentStatus}</td>
+                <td>{getLanguages(user.languages)}</td>
               </tr>
             )
           })}

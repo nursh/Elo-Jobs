@@ -4,7 +4,6 @@ export default function usePagination<T>(data: T[], limit: number) {
 
   const [pageNumber, setPageNumber] = useState(0);
   const pageCount = Math.ceil(data.length / limit);
-  console.log(data.length)
   
   const changePage = (page: number) => {
     setPageNumber(page);
