@@ -7,6 +7,11 @@ type Props = {
 };
 
 export default function JobList({ jobs }: Props) {
+
+  if ('detail' in jobs) {
+    return <div>{jobs.detail}</div>
+  }
+
   return (
     <>
       <table>

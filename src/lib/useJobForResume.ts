@@ -7,7 +7,7 @@ export function useJobForResume(resumeId: string, count: number = 10, filtered: 
     : `/resume/${resumeId}/jobs?n=${count}`;
 
   return useQuery<JobReal[]>({
-    queryKey: ['jobsForResume'],
+    queryKey: ['jobsForResume', resumeId, count, filtered],
     queryFn: async () => {
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}${urlExtra}`);
       return await response.json();

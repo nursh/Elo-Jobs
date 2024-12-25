@@ -6,6 +6,7 @@ import ResumeList from "../components/ResumeList";
 import { useFetchJob } from "../lib/useFetchJob";
 import { useResumeForJob } from "../lib/useResumeForJob";
 import JobChat from "./JobChat";
+import { ChangeEvent, useState } from "react";
 
 type Params = {
   jobId: string;
@@ -14,12 +15,23 @@ type Params = {
 export default function JobProfile() {
   const { jobId } = useParams<Params>();
   const { isLoading, isSuccess, isError, data } = useFetchJob(jobId!);
+  const [filtered, setFiltered] = useState(false);
+  const [count, setCount] = useState(5);
   const {
     isLoading: isResumesLoading,
     isSuccess: isResumesSuccess,
     isError: isResumeError,
     data: resumeData,
-  } = useResumeForJob(jobId!);
+  } = useResumeForJob(jobId!, count, filtered);
+
+  const handleFilterSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
+    const val = evt.currentTarget.value;
+    setFiltered(Boolean(val));
+  }
+
+  const handleCountSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
+    setCount(Number(evt.currentTarget.value));
+  }
 
   return (
     <div className="profile-container">
@@ -35,7 +47,16 @@ export default function JobProfile() {
       </div>
 
       <div className="profile-table">
-        <h2>All Matching Resumes</h2>
+        <h2>Showing {filtered ? "Filtered" : "Unfiltered"} Matching Resumes</h2>
+        <select defaultValue={0} onChange={(handleFilterSelect)}>
+          <option value={0}>Unfiltered</option>
+          <option value={1}>Filtered</option>
+        </select>
+        <select defaultValue={5} onChange={(handleCountSelect)}>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={15}>15</option>
+        </select>
         { isResumesLoading ? (
           <div>Loading...</div>
         ) : isResumeError ? (
