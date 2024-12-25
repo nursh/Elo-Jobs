@@ -1,3 +1,5 @@
+import { Experience } from "./types";
+
 type Lang = {
   name: string;
   level: number;
@@ -26,3 +28,14 @@ export function getLocation(location: string) {
 
   return location;
 }
+
+export function getSpecialization(specs: string[] | null) {
+  return specs && specs.length > 0
+        ? specs.map(spec => spec).join(', ')
+        : "None"
+}
+
+export function getExperience(exp: Experience[]) {
+  return exp.map(ex => ex.title).join(", ");
+}
+

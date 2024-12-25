@@ -6,6 +6,15 @@ type Lang = {
   level: number;
 }
 
+export type Experience = {
+  raw_text: string;
+  title: string;
+  company: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+};
+
 export type Job = {
   id: number;
   title: string;
@@ -72,14 +81,7 @@ export type UserReal = {
     start_year: string | null;
     end_year: string | null;
   }[];
-  experience: {
-    raw_text: string;
-    title: string;
-    company: string;
-    start_date: string;
-    end_date: string;
-    description: string;
-  }[];
+  experience:Experience[];
   marital_status: string;
 }
 
