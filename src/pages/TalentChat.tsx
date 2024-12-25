@@ -11,7 +11,7 @@ export default function TalentChat() {
     import.meta.env.VITE_TALENT_URL,
     {
       onOpen: () => console.log("Connection opened..."),
-      shouldReconnect: (closeEvent: CloseEvent) => true,
+      retryOnError: true,
       reconnectInterval: 30000,
       reconnectAttempts: 3
     }
