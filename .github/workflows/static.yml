@@ -20,6 +20,12 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
+env:
+  VITE_TALENT_URL: ${{ env.VITE_TALENT_URL }}
+  VITE_SERVER_URL: ${{ env.VITE_SERVER_URL }}
+  VITE_JOB_CHAT_URL: ${{ env.VITE_JOB_CHAT_URL }}
+  VITE_RESUME_CHAT_URL: ${{ env.VITE_RESUME_CHAT_URL }}
+  
 jobs:
   # Single deploy job since we're just deploying
   deploy:
