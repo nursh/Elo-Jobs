@@ -1,22 +1,27 @@
 import { useParams } from "react-router";
 import { PageHeading } from "../components/Header";
-import { jobs, qatariUsers, users } from "../utils/data";
 import UserDetails from "../components/UserDetails";
+import { useFetchUserResume } from "../lib/useFetchUserResume";
 
 type Params = {
   userId: string;
-}
+};
 
 export function UserProfile() {
   const { userId } = useParams<Params>();
-  const user = qatariUsers.find(({ id }) => id === Number(userId))!;
-  const matchedJobs = jobs.filter(({ requiredCitizenship }) => requiredCitizenship === user.citizenship)
+  const { isLoading, isSuccess, isError, data } = useFetchUserResume(userId!);
 
   return (
     <div className="profile-container">
       <PageHeading name="User Profile" />
       <div className="side-details">
-        <UserDetails user={user} />
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : isError ? (
+          <div>Something went wrong...</div>
+        ) : isSuccess ? (
+          <UserDetails user={data[0]} />
+        ) : null}
       </div>
 
       <div>
@@ -24,5 +29,5 @@ export function UserProfile() {
         {/* <JobList jobs={matchedJobs} /> */}
       </div>
     </div>
-  )
+  );
 }
