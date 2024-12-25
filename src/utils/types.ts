@@ -30,13 +30,17 @@ export type JobReal = {
     level: number | null;
     definition: string;
   }[];
-  preferred_skills: string[];
+  preferred_skills: {
+    name: string;
+    level: number | null;
+    definition: string;
+  }[];
   required_education: string[];
   required_experience: number;
   required_gender: string | null;
   required_age: number;
   required_languages: Lang[] | null;
-  optional_languages: string[] | null;
+  optional_languages: Lang[] | null;
   required_citizenship: string;
   required_disability: boolean;
 }

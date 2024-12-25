@@ -25,6 +25,7 @@ export default function UserProfiles() {
         <table>
           <thead>
             <tr>
+              <th>id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Age</th>
@@ -38,6 +39,7 @@ export default function UserProfiles() {
             {usersData.map((user) => {
               return (
                 <tr key={user.id}>
+                  <td>{user.id}</td>
                   <td>
                     <NavLink to={`/users/${user.id}`}>{user.name}</NavLink>
                   </td>

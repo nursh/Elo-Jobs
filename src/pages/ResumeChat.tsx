@@ -15,6 +15,8 @@ export default function ResumeChat({ resumeId }: Props) {
     `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`,
     {
       onOpen: () => console.log("Connection opened..."),
+      reconnectInterval: 30,
+      reconnectAttempts: 3
     }
   );
 
