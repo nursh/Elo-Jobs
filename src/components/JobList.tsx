@@ -16,41 +16,43 @@ export default function JobList({ jobs }: Props) {
     <>
       <table>
         <thead>
-          <tr>
-            <th>Job ID</th>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Required Experience</th>
-            <th>Languages</th>
-            <th>Gender</th>
-            <th>Citizenship</th>
-            <th>Max Age</th>
-            <th>Education</th>
-            <th>Disability</th>
-          </tr>
+        <tr>
+          <th>Job ID</th>
+          <th>Title</th>
+          <th>Company</th>
+          <th>Required Experience</th>
+          <th>Languages</th>
+          <th>Gender</th>
+          <th>Citizenship</th>
+          <th>Max Age</th>
+          <th>Education</th>
+          <th>Disability</th>
+          <th>Score</th>
+        </tr>
         </thead>
         <tbody>
           {jobs.map((job) => {
             return (
-              <tr key={job.id}>
-                <td>{job.id}</td>
-                <td>
-                  <NavLink to={`/jobs/${job.id}`}>{job.job_title}</NavLink>
-                </td>
-                <td>{job.company}</td>
-                <td>{job.required_experience}</td>
-                <td>{getLanguages(job.required_languages)}</td>
-                {/*<td>*/}
-                {/*  {job.location === "" || job.location === "nan"*/}
-                {/*    ? ""*/}
-                {/*    : job.location}*/}
-                {/*</td>*/}
-                <td>{job.required_gender}</td>
-                <td>{job.required_citizenship}</td>
-                <td>{job.required_age === 0 ? "": job.required_age}</td>
-                <td>{job.required_education}</td>
-                <td>{job.required_disability}</td>
-              </tr>
+                <tr key={job.id}>
+                  <td>{job.id}</td>
+                  <td>
+                    <NavLink to={`/jobs/${job.id}`}>{job.job_title}</NavLink>
+                  </td>
+                  <td>{job.company}</td>
+                  <td>{job.required_experience}</td>
+                  <td>{getLanguages(job.required_languages)}</td>
+                  {/*<td>*/}
+                  {/*  {job.location === "" || job.location === "nan"*/}
+                  {/*    ? ""*/}
+                  {/*    : job.location}*/}
+                  {/*</td>*/}
+                  <td>{job.required_gender}</td>
+                  <td>{job.required_citizenship}</td>
+                  <td>{job.required_age === 0 ? "" : job.required_age}</td>
+                  <td>{job.required_education}</td>
+                  <td>{job.required_disability}</td>
+                  <td>{job.normalized_score?.toFixed(2)}%</td>
+                </tr>
             );
           })}
         </tbody>

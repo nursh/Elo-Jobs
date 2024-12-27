@@ -15,7 +15,7 @@ type Params = {
 export default function JobProfile() {
   const { jobId } = useParams<Params>();
   const { isLoading, isSuccess, isError, data } = useFetchJob(jobId!);
-  const [filtered, setFiltered] = useState(false);
+  const [filtered, setFiltered] = useState(true);
   const [count, setCount] = useState(15);
   const {
     isLoading: isResumesLoading,
@@ -27,7 +27,7 @@ export default function JobProfile() {
 
   const handleFilterSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
     const val = evt.currentTarget.value;
-    setFiltered(Boolean(val));
+    setFiltered(Boolean(Number(val)));
   }
 
   const handleCountSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -37,6 +37,10 @@ export default function JobProfile() {
   useEffect(() => {
     refetchResumes();
   }, [filtered, count]);
+
+  const sortedResumeData = resumeData?.slice().sort((a, b) => (b.normalized_score ?? 0) - (a.normalized_score ?? 0)) || [];
+
+
   return (
     <div className="profile-container">
       <PageHeading name="Job Profile" />
@@ -51,8 +55,8 @@ export default function JobProfile() {
       </div>
 
       <div className="profile-table">
-        <h2>Showing {filtered ? "Filtered" : "Unfiltered"} Matching Resumes</h2>
-        <select defaultValue={0} onChange={(handleFilterSelect)}>
+        <h2>Showing {filtered ? "Filtered" : "Unfiltered" } Matching Resumes</h2>
+        <select defaultValue={1} onChange={(handleFilterSelect)}>
           <option value={0}>Unfiltered</option>
           <option value={1}>Filtered</option>
         </select>
@@ -67,13 +71,13 @@ export default function JobProfile() {
         ) : isResumeError ? (
           <div>Something went wrong...</div>
         ) : isResumesSuccess ?  (
-        <ResumeList users={resumeData} />
+        <ResumeList users={sortedResumeData} />
         ) : null}
       </div>
 
       <div className="profile-chat">
         <h2>Chat Profile</h2>
-        <JobChat jobId={jobId!} filtered={filtered}/>
+        <JobChat jobId={jobId!} filtered={filtered} />
       </div>
     </div>
   );

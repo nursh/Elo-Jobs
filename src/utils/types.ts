@@ -52,6 +52,7 @@ export type JobReal = {
   optional_languages: Lang[] | null;
   required_citizenship: string;
   required_disability: boolean;
+  normalized_score: number | null;
 }
 
 export type UserReal = {
@@ -83,6 +84,7 @@ export type UserReal = {
   }[];
   experience:Experience[];
   marital_status: string;
+  normalized_score: number | null;
 }
 
 

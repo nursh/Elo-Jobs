@@ -22,6 +22,7 @@ export default function ResumeList({ users }: Props) {
             <th>Languages</th>
             <th>Education</th>
             <th>Citizenship</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@ export default function ResumeList({ users }: Props) {
                 <td>{getLanguages(user.languages)}</td>
                 <td>{user.level_of_education}</td>
                 <td>{user.citizenship}</td>
+                <td>{user.normalized_score?.toFixed(2)}%</td>
               </tr>
             )
           })}

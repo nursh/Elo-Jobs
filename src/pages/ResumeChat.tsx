@@ -17,9 +17,12 @@ export default function ResumeChat({ resumeId, filtered }: Props) {
     url,
     {
       onOpen: () => console.log("Connection opened..."),
+      onClose: () => console.log("Connection closed..."),
+      onError: () => console.log("Connection error..."),
+      shouldReconnect: () => true,
       retryOnError:  true,
-      reconnectInterval: 30000,
-      reconnectAttempts: 3
+      reconnectInterval: 15000,
+      reconnectAttempts: 4
     }
   );
 
@@ -44,15 +47,34 @@ export default function ResumeChat({ resumeId, filtered }: Props) {
     }
   }, [lastMessage])
 
-  return (
-    <div className="">
-      <p className="connection-status">Connection Status: {connectionStatus}...</p>
-      <div className="talent-chat-messages">
-        <ChatMessages messages={messages} />
-      </div>
-      <div className="talent-chat-box">
-        <Chat sendMessage={sendMessage} />
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className="">
+  //     <p className="connection-status">Connection Status: {connectionStatus}...</p>
+  //     <div className="talent-chat-messages">
+  //       <ChatMessages messages={messages} />
+  //     </div>
+  //     <div className="talent-chat-box">
+  //       <Chat sendMessage={sendMessage} />
+  //     </div>
+  //   </div>
+  // );
+    return (
+        <div className="">
+            {readyState !== ReadyState.OPEN ? (
+                <div className="loading-screen">
+                    <div className="loading-spinner"></div>
+                </div>
+            ) : (
+                <>
+                    <p className="connection-status">Connection Status: {connectionStatus}...</p>
+                    <div className="talent-chat-messages">
+                        <ChatMessages messages={messages} />
+                    </div>
+                    <div className="talent-chat-box">
+                        <Chat sendMessage={sendMessage} />
+                    </div>
+                </>
+            )}
+        </div>
+    );
 }

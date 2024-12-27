@@ -14,7 +14,7 @@ type Params = {
 export function UserProfile() {
   const { userId } = useParams<Params>();
   const { isLoading, isSuccess, isError, data } = useFetchUserResume(userId!);
-  const [filtered, setFiltered] = useState(false);
+  const [filtered, setFiltered] = useState(true);
   const [count, setCount] = useState(15);
   const {
     isLoading: isJobsLoading,
@@ -26,7 +26,7 @@ export function UserProfile() {
 
   const handleFilterSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
     const val = evt.currentTarget.value;
-    setFiltered(Boolean(val));
+    setFiltered(Boolean(Number(val)));
   }
 
   const handleCountSelect = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -36,6 +36,9 @@ export function UserProfile() {
   useEffect(() => {
     refetchJobs();
   }, [filtered, count]);
+
+  const sortedJobsData = jobsData?.slice().sort((a, b) => (b.normalized_score ?? 0) - (a.normalized_score ?? 0)) || [];
+
 
   return (
     <div className="profile-container">
@@ -52,7 +55,7 @@ export function UserProfile() {
 
       <div className="profile-table">
         <h2>Showing {filtered ? "Filtered" : "Unfiltered"} Matching Jobs</h2>
-        <select defaultValue={0} onChange={(handleFilterSelect)}>
+        <select defaultValue={1} onChange={(handleFilterSelect)}>
           <option value={0}>Unfiltered</option>
           <option value={1}>Filtered</option>
         </select>
@@ -67,7 +70,7 @@ export function UserProfile() {
         ) : isJobsError ? (
           <div>Something went wrong...</div>
         ) : isJobsSuccess ? (
-          <JobList jobs={jobsData} />
+          <JobList jobs={sortedJobsData} />
         ) : null}
       </div>
 
