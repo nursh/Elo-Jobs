@@ -5,25 +5,33 @@ import ChatMessages from "../components/ChatMessages";
 import '../assets/styles/TalentChat.css';
 import { Message } from "../utils/types";
 
-
 type Props = {
   resumeId: string;
   filtered: boolean;
 }
 
 export default function ResumeChat({ resumeId, filtered }: Props) {
-    const url = filtered ? `${import.meta.env.VITE_RESUME_CHAT_URL_FILTERED}/${resumeId}` : `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`;
-    const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
-    url,
-    {
-      onOpen: () => console.log("Connection opened..."),
-      onClose: () => console.log("Connection closed..."),
-      onError: () => console.log("Connection error..."),
-      shouldReconnect: () => true,
-      retryOnError:  true,
-      reconnectInterval: 15000,
-      reconnectAttempts: 4
-    }
+  const [reconnectAttempts, setReconnectAttempts] = useState(0);
+  const maxReconnectAttempts = 3;
+
+  const url = filtered ? `${import.meta.env.VITE_RESUME_CHAT_URL_FILTERED}/${resumeId}` : `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`;
+  const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
+      url,
+      {
+        onOpen: () => {
+          console.log("Connection opened...");
+          setReconnectAttempts(0);
+        },
+        onClose: () => {
+          console.log("Connection closed...");
+          setReconnectAttempts(prev => prev + 1);
+        },
+        onError: () => console.log("Connection error..."),
+        shouldReconnect: () => reconnectAttempts < maxReconnectAttempts,
+        retryOnError: true,
+        reconnectInterval: 25000,
+        reconnectAttempts: maxReconnectAttempts
+      }
   );
 
   const connectionStatus = {
@@ -45,36 +53,29 @@ export default function ResumeChat({ resumeId, filtered }: Props) {
     if (lastMessage !== null) {
       setMessages(prev => [...prev, { role: 'chatbot', content: lastMessage.data }]);
     }
-  }, [lastMessage])
+  }, [lastMessage]);
 
-  // return (
-  //   <div className="">
-  //     <p className="connection-status">Connection Status: {connectionStatus}...</p>
-  //     <div className="talent-chat-messages">
-  //       <ChatMessages messages={messages} />
-  //     </div>
-  //     <div className="talent-chat-box">
-  //       <Chat sendMessage={sendMessage} />
-  //     </div>
-  //   </div>
-  // );
-    return (
-        <div className="">
-            {readyState !== ReadyState.OPEN ? (
-                <div className="loading-screen">
-                    <div className="loading-spinner"></div>
-                </div>
-            ) : (
-                <>
-                    <p className="connection-status">Connection Status: {connectionStatus}...</p>
-                    <div className="talent-chat-messages">
-                        <ChatMessages messages={messages} />
-                    </div>
-                    <div className="talent-chat-box">
-                        <Chat sendMessage={sendMessage} />
-                    </div>
-                </>
-            )}
-        </div>
-    );
+  return (
+      <div className="">
+        {reconnectAttempts >= maxReconnectAttempts ? (
+            <div className="error-screen">
+              <p>Failed to connect. Please return to the <a href="/job-listing">job listing</a> or <a href="/user-listing">user listing</a> page.</p>
+            </div>
+        ) : readyState !== ReadyState.OPEN ? (
+            <div className="loading-screen">
+              <div className="loading-spinner"></div>
+            </div>
+        ) : (
+            <>
+              <p className="connection-status">Connection Status: {connectionStatus}...</p>
+              <div className="talent-chat-messages">
+                <ChatMessages messages={messages} />
+              </div>
+              <div className="talent-chat-box">
+                <Chat sendMessage={sendMessage} />
+              </div>
+            </>
+        )}
+      </div>
+  );
 }
