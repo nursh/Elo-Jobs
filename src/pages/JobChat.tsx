@@ -12,7 +12,7 @@ type Props = {
 
 export default function JobChat({ jobId, filtered }: Props) {
     const [reconnectAttempts, setReconnectAttempts] = useState(0);
-    const maxReconnectAttempts = 3;
+    const maxReconnectAttempts = 4;
 
     const url = filtered ? `${import.meta.env.VITE_JOB_CHAT_URL_FILTERED}/${jobId}` : `${import.meta.env.VITE_JOB_CHAT_URL}/${jobId}`;
     const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
@@ -29,7 +29,7 @@ export default function JobChat({ jobId, filtered }: Props) {
             onError: () => console.log("Connection error..."),
             shouldReconnect: () => reconnectAttempts < maxReconnectAttempts,
             retryOnError: true,
-            reconnectInterval: 25000,
+            reconnectInterval: 15000,
             reconnectAttempts: maxReconnectAttempts
         }
     );

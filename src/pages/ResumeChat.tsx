@@ -12,7 +12,7 @@ type Props = {
 
 export default function ResumeChat({ resumeId, filtered }: Props) {
   const [reconnectAttempts, setReconnectAttempts] = useState(0);
-  const maxReconnectAttempts = 3;
+  const maxReconnectAttempts = 4;
 
   const url = filtered ? `${import.meta.env.VITE_RESUME_CHAT_URL_FILTERED}/${resumeId}` : `${import.meta.env.VITE_RESUME_CHAT_URL}/${resumeId}`;
   const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
@@ -29,7 +29,7 @@ export default function ResumeChat({ resumeId, filtered }: Props) {
         onError: () => console.log("Connection error..."),
         shouldReconnect: () => reconnectAttempts < maxReconnectAttempts,
         retryOnError: true,
-        reconnectInterval: 25000,
+        reconnectInterval: 15000,
         reconnectAttempts: maxReconnectAttempts
       }
   );
