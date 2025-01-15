@@ -55,6 +55,11 @@ export default function JobChat({ jobId, filtered }: Props) {
         }
     }, [lastMessage]);
 
+    useEffect(() => {
+        // Clear messages when URL changes
+        setMessages([]);
+    }, [url]);
+
     return (
         <div className="">
             {reconnectAttempts >= maxReconnectAttempts ? (

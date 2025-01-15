@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import './assets/styles/App.css';
 import './assets/styles/Chat.css';
@@ -8,14 +8,14 @@ import { UserProfile } from './pages/UserProfile';
 import MainLayout from './pages/MainLayout';
 import UserProfiles from './pages/UserProfiles';
 import TalentChat from './pages/TalentChat';
-import PasswordPage from './pages/PasswordPage';
+// import PasswordPage from './pages/PasswordPage';
 
 function App() {
-  const [accessGranted, setAccessGranted] = useState(false);
+  // const [accessGranted, setAccessGranted] = useState(false);
 
   return (
       <div className="App">
-        {accessGranted ? (
+        {/*{accessGranted ? (*/}
             <BrowserRouter>
               <Routes>
                 <Route element={<MainLayout />}>
@@ -27,9 +27,9 @@ function App() {
                 </Route>
               </Routes>
             </BrowserRouter>
-        ) : (
-            <PasswordPage onAccessGranted={() => setAccessGranted(true)} />
-        )}
+        {/*) : (*/}
+        {/*    <PasswordPage onAccessGranted={() => setAccessGranted(true)} />*/}
+        {/*)}*/}
       </div>
   );
 }
